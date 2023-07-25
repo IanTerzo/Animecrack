@@ -15,6 +15,11 @@ app.get('/info', function (req, res){
 
 });
 
+app.get('/cerca', function (req, res){
+  res.sendFile(__dirname + '/web/cerca.html')
+
+});
+
 app.get('/search', function (req, res){
    console.log(req.param('query'))
    const url = 'https://www.animeworld.so/search?keyword=' + req.param('query');
