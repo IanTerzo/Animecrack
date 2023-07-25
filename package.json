@@ -1,0 +1,29 @@
+{
+  "name": "animecrack",
+  "version": "1.0.0",
+  "description": "Anime senza pubblicità",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simone2611/Animecrack.git"
+  },
+  "keywords": [
+    "Anime"
+  ],
+  "author": "Sim0",
+  "license": "CC-BY-NC-4.0",
+  "bugs": {
+    "url": "https://github.com/Simone2611/Animecrack/issues"
+  },
+  "homepage": "https://github.com/Simone2611/Animecrack#readme",
+  "dependencies": {
+    "connect": "^3.7.0",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "server-static": "^2.0.5"
+  }
+}

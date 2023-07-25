@@ -1,0 +1,102 @@
+<html>
+    <meta charset="UTF-8">
+    <title>
+        Anime Player
+    </title>
+    <head>
+        <base href="/web/">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="css.css">
+
+        
+    </head>
+    
+<body style="background-color: rgb(10, 12, 19);">
+
+    <div style="background-color: rgb(30, 38, 46); width: 100%; height: 50px; position: fixed; top:0px; left: 0px; "></div>
+    <h1 id="rett3" class="menu">|||</h1>
+
+    <div id="home" style="left: -150px; position: fixed;" >
+        <div style="background-color: rgb(40, 46, 53); z-index: 10;position: absolute; height: 1700px; width: 150px; ">
+            <a style="top:50px;" class="txtslide" href="../" >Home</a>
+            <a style="top:80px;" class="txtslide" href="../info" >Info</a>
+        </div>
+        
+    </div>
+
+    <div class="search">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" style="background-color: rgb(26, 29, 46); color:white;" placeholder="Cerca un Anime...">
+    </div>
+
+    <a href="https://www.youtube.com/@Simone2611/videos" style="position: fixed;">
+        <img src="Immagini/Youtube.png" class="yt">
+    </a>
+
+    <img src="Immagini/kirigiri.png" class="bgimg">
+
+    <a href="../" >
+        <img src="Immagini/AnimeCrack.png" class="logo">
+    </a>
+    
+    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 300px; height: 430px; top: 100px; left: 25%; transform: translateX(-50%); border-radius: 25px 25px;z-index: -5;">
+        <img src="Immagini/test.jpg" class="img-anime">
+    </div>
+    <h2 class="testo" style="top:90px; position: absolute; left: 36%; z-index: -5;">Titolo: Oshi no Ko Sub ITA</h2>
+
+    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 878px; height: 381px; top: 150px; left: 680px;border-radius: 25px 25px; z-index: -5;">
+        <h4 class="testo" style="padding-top: 5px;">Studio:</h4>
+        <h4 class="testo">Stato:</h4>
+        <h4 class="testo">Data di uscita:</h4>
+        <h4 class="testo">Episodi:</h4>
+        <h4 class="testo">Durata episodi:</h4>
+        <h4 class="testo">Visualizzazioni:</h4>
+        <h4 class="testo">☆ Voto:</h4>
+    </div>
+
+    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 1250px; height: 381px; top: 600px; left: 50%; transform: translateX(-50%); border-radius: 25px 25px; z-index: -5;">
+        <h4 class="testo">Episodi:</h4>
+        <div style="width: 1190px; position: absolute; left: 50%; transform: translateX(-50%); height:50px">
+        <button type="button" class="btn btn-light">Episodio 1</button>
+        <button type="button" class="btn btn-light">Episodio 2</button>
+        <button type="button" class="btn btn-light">Episodio 3</button>
+        <button type="button" class="btn btn-light">Episodio 4</button>
+        <button type="button" class="btn btn-light">Episodio 5</button>
+        <button type="button" class="btn btn-light">Episodio 6</button>
+        <button type="button" class="btn btn-light">Episodio 7</button>
+        <button type="button" class="btn btn-light">Episodio 8</button>
+        <button type="button" class="btn btn-light">Episodio 9</button>
+        <button type="button" class="btn btn-light">Episodio 10</button>
+        <button type="button" class="btn btn-light">Episodio 11</button>
+        <button type="button" class="btn btn-light">Episodio 12</button>
+        </div>
+    </div>
+
+<script>
+        
+    $(document).ready(function(){
+
+        var cliccato = false
+
+        $("#rett3").click(function(){
+            if(cliccato == false) {
+                $('#home').css({'left':'-50px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(90deg)', 'transition': '1s'});  
+                cliccato = true
+            }
+            else{
+                $('#home').css({'left':'-150px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(0deg)', 'transition': '1s'});  
+                cliccato = false
+            };
+        });
+
+    });
+
+</script>
+
+</body>
