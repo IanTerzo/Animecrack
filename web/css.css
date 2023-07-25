@@ -76,3 +76,13 @@
     border-radius: 15px 15px;
 }
 
+.poster{
+    top: 17px; 
+    left: 10px;
+    width: 276px;
+    height: 390.6px;
+    border-radius: 15px 15px;
+    z-index: -5;
+    position: relative;
+}
+
