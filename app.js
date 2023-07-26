@@ -1,7 +1,11 @@
 const express = require('express')
 const axios = require('axios');
+const fs = require("fs");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 const app = express();
+
 
 app.use(express.static(__dirname + '/'));
 
@@ -15,31 +19,35 @@ app.get('/info', function (req, res){
 
 });
 
-app.get('/cerca', function (req, res){
-  res.sendFile(__dirname + '/web/cerca.html')
 
-});
+const cerca1 = fs.readFileSync("./web/cerca1.html");
+const cerca2 = fs.readFileSync("./web/cerca2.html");
+
+var html = ""
 
 app.get('/search', function (req, res){
-   console.log(req.param('query'))
    const url = 'https://www.animeworld.so/search?keyword=' + req.param('query');
-   console.log(url)
 axios.get(url)
   .then(response => {
-    const htmlContent = response.data;
+    
+	const dom = new JSDOM(response.data)
 	
-	const anipattern = /<div[^>]*class="inner"[^>]*>[\s\S]*?<\/div>/g;
-	
-    const matches = htmlContent.match(anipattern);
+	let matches = dom.window.document.querySelectorAll(".item > .inner > a")
 	
     matches.forEach(element => {
-		console.log(element);
+		if (!element.innerHTML.includes("Ricerca nel sito")){
+			html+='<div class="titolo">' + element.outerHTML +"</div>"
+		}
 	});
+	
+	res.send(cerca1 + html + cerca2)
+	html = ""
   })
   .catch(error => {
     console.error('Error fetching website:', error.message);
   });
-	res.send("search page")
+	
+	
 });
 
 console.log("Server is running on localhost8080")

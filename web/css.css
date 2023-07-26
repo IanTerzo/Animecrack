@@ -58,10 +58,21 @@
     z-index: -5;
 }
 
+.testo2{
+    color:white; 
+
+    padding-top: 20px; 
+    padding-left: 30px;
+    padding-right: 30px;
+    z-index: -5;
+    font-size:small;
+    text-align: center;
+}
+
 .rettangoli{
     background-color: rgb(40, 50, 59); 
     position:absolute; 
-    width: 1100px;  
+    width: 1100px;
     left: 50%; 
     transform: translateX(-50%); 
     border-radius: 25px 25px;
@@ -76,13 +87,24 @@
     border-radius: 15px 15px;
 }
 
-.poster{
-    top: 17px; 
+.titolo a{
+	color:white; 
+
+    padding-top: 20px; 
+    padding-left: 30px;
+    padding-right: 30px;
+    z-index: -5;
+    font-size:small;
+    text-align: center;
+	text-decoration: none;
+}
+.titolo img{ 
+	top: 17px; 
     left: 10px;
     width: 276px;
     height: 390.6px;
     border-radius: 15px 15px;
-    z-index: -5;
+    z-index: 10;
     position: relative;
+	
 }
-
