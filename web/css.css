@@ -42,11 +42,12 @@ div::-webkit-scrollbar {
 }
 
 .logo{
-    top: -68px; 
-    left: 25%;
-    width: 345.6px;
-    height: 194.4px;
+    top: 5px; 
+    left: 30%;
+    width: 156px;
+    height: 40.35px;
     position: fixed;
+    z-index: 20;
 }
 
 .txtslide{
