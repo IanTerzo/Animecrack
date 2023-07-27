@@ -1,3 +1,12 @@
+body{
+    width:0%;
+    height: 0%;
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}
+
 .menu {
     font-size: 40px; 
     position: fixed;
@@ -33,11 +42,12 @@
 }
 
 .logo{
-    top: -68px; 
-    left: 25%;
-    width: 345.6px;
-    height: 194.4px;
+    top: 5px; 
+    left: 30%;
+    width: 156px;
+    height: 40.35px;
     position: fixed;
+    z-index: 20;
 }
 
 .txtslide{
@@ -87,17 +97,30 @@
     border-radius: 15px 15px;
 }
 
-.titolo a{
-	color:white; 
-
-    padding-top: 20px; 
-    padding-left: 30px;
-    padding-right: 30px;
-    z-index: -5;
-    font-size:small;
-    text-align: center;
-	text-decoration: none;
+.titolo {
+    height: 480px;
+    position: relative;
+    left: 9%;
+    display: inline-block; /* or display: inline-flex; */
+    margin-right: 10px; /* Optional: Add some space between the divs */
 }
+
+.name {
+    color: white; 
+    top: 40px;
+    left: -15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    width: 330px; /* Adjust the width to fit your layout */
+    word-wrap:break-word;
+    display: block; /* Change display to block */
+}
+
+
+
+
 .titolo img{ 
 	top: 17px; 
     left: 10px;
@@ -108,3 +131,95 @@
     position: relative;
 	
 }
+
+.video{
+    width: 560px;
+    height: 300px;
+}
+
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #cb5aff 0, #9e54ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(74, 58, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin: 12px;
+  z-index: 2;
+}
+
+.button-29:focus {
+  box-shadow: #883ce0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #753ce0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #6d3ce0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #833ce0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/* CSS */
+.slideshow-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .mySlides {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  
+  .mySlides img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .mySlides.fade {
+    animation: slide 3s ease infinite;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      left: -100%;
+      opacity: 0;
+    }
+  }  

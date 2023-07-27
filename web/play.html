@@ -1,0 +1,84 @@
+<html>
+    <meta charset="UTF-8">
+    <title>
+        Anime Player
+    </title>
+    <head>
+        <base href="/web/">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="css.css">
+
+        
+    </head>
+    
+<body style="background-color: rgb(10, 12, 19);">
+
+    <div style="background-color: rgb(30, 38, 46); width: 100%; height: 50px; position: fixed; top:0px; left: 0px;z-index: 7; "></div>
+    <h1 id="rett3" class="menu">|||</h1>
+
+    <div id="home" style="left: -150px; position: fixed;" >
+        <div style="background-color: rgb(40, 46, 53); z-index: 10;position: absolute; height: 1700px; width: 150px; ">
+            <a style="top:50px;" class="txtslide" href="../" >Home</a>
+            <a style="top:80px;" class="txtslide" href="../info" >Info</a>
+        </div>
+        
+    </div>
+
+    <div class="search">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" style="background-color: rgb(26, 29, 46); color:white;" placeholder="Cerca un Anime...">
+    </div>
+
+    <a href="https://www.youtube.com/@Simone2611/videos" style="position: fixed;z-index: 11;">
+        <img src="Immagini\Youtube.png" class="yt">
+    </a>
+
+    <img src="Immagini\kirigiri.png" class="bgimg">
+
+    <a href="../" >
+        <img src="Immagini\AnimeCrack.png" class="logo">
+    </a>
+    
+    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 70%; height: 600px; top: 150px; left: 50%; transform: translateX(-50%); border-radius: 25px 25px;z-index: 2;">
+        <h1 class="testo" style="text-align: center; z-index: -5;">Oshi no ko Ep 1</h1>
+        <video style="background: #000; width: 896px; height: 504px; display: block; position: absolute; margin: 0; padding: 3px; outline: none; border-radius: 15px 15px; left: 50%; transform: translateX(-50%); " preload="metadata" controls="">
+            <source src="https://server25.cherrycloud.net/DDL/ANIME/ShingekiNoKyojinITA/ShingekiNoKyojin_Ep_01_ITA.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 70%; height: 300px; top: 800px; left: 50%; transform: translateX(-50%); border-radius: 25px 25px;">
+        <h3 class="testo" style="text-align: center;">Episodi</h3>
+        <button class="button-29" role="button">Episodio 1</button>
+        <button class="button-29" role="button">Episodio 2</button>
+        <button class="button-29" role="button">Episodio 3</button>
+        <button class="button-29" role="button">Episodio 4</button>
+        <button class="button-29" role="button">Episodio 5</button>
+        <button class="button-29" role="button">Episodio 6</button>
+    </div>
+<script>
+        
+    $(document).ready(function(){
+
+        var cliccato = false
+
+        $("#rett3").click(function(){
+            if(cliccato == false) {
+                $('#home').css({'left':'-50px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(90deg)', 'transition': '1s'});  
+                cliccato = true
+            }
+            else{
+                $('#home').css({'left':'-150px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(0deg)', 'transition': '1s'});  
+                cliccato = false
+            };
+        });
+
+    });
+
+</script>
+
+</body>
