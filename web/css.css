@@ -98,23 +98,23 @@ div::-webkit-scrollbar {
 }
 
 .titolo {
-    height: 450px;
+    height: 480px;
     position: relative;
-    left: 10px;
+    left: 9%;
     display: inline-block; /* or display: inline-flex; */
-    margin-right: 100px; /* Optional: Add some space between the divs */
+    margin-right: 10px; /* Optional: Add some space between the divs */
 }
 
 .name {
     color: white; 
-    top: 30px;
-    left: 20px;
+    top: 40px;
+    left: -15px;
     text-align: center;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     position: relative;
-    width: 250px; /* Adjust the width to fit your layout */
-    word-wrap: break-word;
+    width: 330px; /* Adjust the width to fit your layout */
+    word-wrap:break-word;
     display: block; /* Change display to block */
 }
 
@@ -183,3 +183,43 @@ div::-webkit-scrollbar {
   box-shadow: #833ce0 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+/* CSS */
+.slideshow-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .mySlides {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  
+  .mySlides img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .mySlides.fade {
+    animation: slide 3s ease infinite;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      left: -100%;
+      opacity: 0;
+    }
+  }  
