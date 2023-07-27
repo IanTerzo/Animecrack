@@ -44,7 +44,7 @@ async function playvid(url, res, epurl) {
 			playhtml+= '</div><div style="display: none" id="server' + server + '">' + currentelement;
 			server +=1;
 			if (playhtml.includes('class="active"')){
-				console.log("dfff")
+
 				if (!found){
 					found = true
 					active = server-1
@@ -58,7 +58,7 @@ async function playvid(url, res, epurl) {
 	  
 		if (!found){
 			if (playhtml.includes('class="active"')){
-					console.log("dfff")
+
 					if (!found){
 						found = true
 						active = server-1
@@ -66,7 +66,7 @@ async function playvid(url, res, epurl) {
 				} 
 		}
 		
-		console.log(active)
+
 		playhtml = playhtml.replace('style="display: none" id="server' + active + '"','style="display: block" id="server' + active + '"' )
 
 	  
@@ -159,6 +159,9 @@ axios.get(url)
 	
 });
 
-app.listen(8080, function(){
-    console.log("Server is running on localhost:8080")
+app.listen(8080,'0.0.0.0', function(){
+	console.log("Il server è in esecuzione su localhost:8080")
+	console.log("----------------------------------------------------------------------------")
+	console.log("Per accedervi da altri dispositivi utilizza: [Il TUO INDIRIZZO IPV4]:8080")
+	console.log('Per trovare il tuo indirizzo IPv4, utilizza il comando "ipconfig" su Windows')
 });
