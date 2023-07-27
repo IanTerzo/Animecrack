@@ -1,12 +1,3 @@
-body{
-    width:0%;
-    height: 0%;
-}
-
-div::-webkit-scrollbar {
-    display: none;
-}
-
 .menu {
     font-size: 40px; 
     position: fixed;
@@ -16,6 +7,13 @@ div::-webkit-scrollbar {
     z-index: 11;
 }
 
+body{
+    width:0%;
+   
+}
+div::-webkit-scrollbar {
+    display: none;
+}
 .search {
     position: fixed; 
     left: 50%;
@@ -97,29 +95,33 @@ div::-webkit-scrollbar {
     border-radius: 15px 15px;
 }
 
+.titolo{
+	height:490.6px;
+	
+	
+}
+
+
 .titolo {
-    height: 480px;
+    height: 450px;
     position: relative;
-    left: 9%;
+    left: 10px;
     display: inline-block; /* or display: inline-flex; */
-    margin-right: 10px; /* Optional: Add some space between the divs */
+    margin-right: 100px; /* Optional: Add some space between the divs */
 }
 
 .name {
     color: white; 
-    top: 40px;
-    left: -15px;
+    top: 30px;
+    left: 20px;
     text-align: center;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
-    width: 330px; /* Adjust the width to fit your layout */
-    word-wrap:break-word;
+    width: 250px; /* Adjust the width to fit your layout */
+    word-wrap: break-word;
     display: block; /* Change display to block */
 }
-
-
-
 
 .titolo img{ 
 	top: 17px; 
@@ -132,13 +134,13 @@ div::-webkit-scrollbar {
 	
 }
 
-.video{
+video{
     width: 560px;
     height: 300px;
 }
 
-.button-29 {
-  align-items: center;
+#episodi a{
+	align-items: center;
   appearance: none;
   background-image: radial-gradient(100% 100% at 100% 0, #cb5aff 0, #9e54ff 100%);
   border: 0;
@@ -168,58 +170,25 @@ div::-webkit-scrollbar {
   font-size: 18px;
   margin: 12px;
   z-index: 2;
+  
+	
 }
 
-.button-29:focus {
+#episodi a:focus {
   box-shadow: #883ce0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #753ce0 0 -3px 0 inset;
 }
 
-.button-29:hover {
+#episodi a:hover {
   box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #6d3ce0 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-.button-29:active {
+#episodi a:active {
   box-shadow: #833ce0 0 3px 7px inset;
   transform: translateY(2px);
 }
 
-/* CSS */
-.slideshow-container {
-    overflow: hidden;
+.name {
     position: relative;
-  }
-  
-  .mySlides {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  
-  .mySlides img {
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .mySlides.fade {
-    animation: slide 3s ease infinite;
-  }
-  
-  @keyframes slide {
-    0% {
-      left: 0;
-      opacity: 0;
-    }
-    25% {
-      opacity: 1;
-    }
-    75% {
-      opacity: 1;
-    }
-    100% {
-      left: -100%;
-      opacity: 0;
-    }
-  }  
+    top: 15px;
+}
