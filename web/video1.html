@@ -12,25 +12,24 @@
 
         <link rel="stylesheet" href="css.css">
 
-        
     </head>
     
 <body style="background-color: rgb(10, 12, 19);">
 
-    <div style="background-color: rgb(30, 38, 46); width: 100%; height: 50px; position: fixed; top:0px; left: 0px;z-index: 7; "></div>
+    <div class="barraup"></div>
     <h1 id="rett3" class="menu">|||</h1>
 
-    <div id="home" style="left: -150px; position: fixed;" >
-        <div style="background-color: rgb(40, 46, 53); z-index: 10; position: absolute; height: 1700px; width: 150px; ">
-            <a style="top:50px;" class="txtslide" href="../" >Home</a>
-            <a style="top:80px;" class="txtslide" href="../info" >Info</a>
+    <div id="home" class="cont-slider1" >
+        <div class="slider1">
+            <a class="txtslide1" href="../" >Home</a>
+            <a class="txtslide2" href="../info" >Info</a>
         </div>
         
     </div>
 	
 
-    <div style="z-index: 12;" class="search">
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" style="background-color: rgb(26, 29, 46); color:white;" placeholder="Cerca un Anime..." onkeydown="if (event.key == 'Enter'){window.location.href = '/search?query='+this.value;}else{}">
+    <div class="search">
+        <input type="text" class="form-control, input" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Cerca un Anime..." onkeydown="if (event.key == 'Enter'){window.location.href = '/search?query='+this.value;}else{}">
     </div>
 	
     <a href="https://www.youtube.com/@Simone2611/videos" style="position: fixed;z-index: 11;">
@@ -43,13 +42,16 @@
         <img src="Immagini\AnimeCrack.png" class="logo">
     </a>
     
-    <div style="background-color: rgb(30, 38, 46); position:absolute; width: 70%; height: 600px; top: 150px; left: 50%; transform: translateX(-50%); border-radius: 25px 25px;z-index: 2;">
+    <div class="videoc">
         <h1 class="testo" style="text-align: center; z-index: -5;">{TITOLO} - Ep {EPISODIO}</h1>
-        <video style="background: #000; width: 896px; height: 504px; display: block; position: absolute; margin: 0; padding: 3px; outline: none; border-radius: 15px 15px; left: 50%; transform: translateX(-50%); " preload="metadata" controls="">
+        <video class="video" preload="metadata" controls="">
             <source src="{EPURL}" type="video/mp4">
         </video>
     </div>
 
-    <div id="episodi" style="background-color: rgb(30, 38, 46); position:absolute; width: 70%; height: max-content; top: 800px; left: 50%; transform: translateX(-50%); border-radius: 25px 25px;">
+    <div id="episodi" class="epc">
 		<h3 class="testo" style="text-align: center;">Episodi</h3>
+        <div id="servers-tab">
+            <span class="serverspan"> Server 1</span><span class="serverspan"> Server 2</span> <span class="serverspan"> Server 3</span> 
+        </div>
 		<div>
