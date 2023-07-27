@@ -3,6 +3,7 @@ const axios = require('axios');
 const fs = require("fs");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const puppeteer = require('puppeteer');
 
 const app = express();
 
@@ -24,41 +25,47 @@ const video2 = fs.readFileSync("./web/video2.html");
 var playhtml = ""
 
 async function playvid(url, res, epurl) { 
-
-   await axios.get(url)
-	.then(response => {
-
-	  const dom = new JSDOM(response.data);
-	  let matches = dom.window.document.querySelectorAll(".episode > a");
-	  let title = dom.window.document.querySelector("#anime-title");
-	  let episode = dom.window.document.querySelector(".episodeNum");
-	  
-	  var server = 1
-	  var active = 0
-	  var found = false
-	  matches.forEach(element => {
-		  currentelement = element.outerHTML
-		  
-		  if (element.innerHTML == "1"){
+	// Animeworld by default redirects to the first episode on a working server
+	// This is convenient so that the user doesn't need to find a working server themself
+	(async () => {
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
+	
+		await page.goto(url,{waitUntil: "domcontentloaded"})
+			.catch((err) => console.log("error loading url", err));
+		
+		let bodyHTML = await page.evaluate(() => document.body.innerHTML);
+	
+		const dom = new JSDOM(bodyHTML);
 			
-			playhtml+= '</div><div style="display: none" id="server' + server + '">' + currentelement;
-			server +=1;
-			if (playhtml.includes('class="active"')){
-				console.log("dfff")
-				if (!found){
-					found = true
-					active = server-1
-				}
-			} 
-		  }
-		  else{
-			  playhtml+= currentelement;
-		  }
-	  });
+		let matches = dom.window.document.querySelectorAll(".episode > a");
+		let title = dom.window.document.querySelector("#anime-title");
+		let episode = dom.window.document.querySelector(".episodeNum");
+	  
+		var server = 1
+		var active = 0
+		var found = false
+		matches.forEach(element => {
+			currentelement = element.outerHTML
+		  
+			if (element.innerHTML == "1"){
+			
+				playhtml+= '</div><div style="display: none" id="server' + server + '">' + currentelement;
+				server +=1;
+				if (playhtml.includes('class="active"')){
+					if (!found){
+						found = true
+						active = server-1
+					}
+				} 
+			}
+			else{
+				playhtml+= currentelement;
+			}
+		});
 	  
 		if (!found){
 			if (playhtml.includes('class="active"')){
-					console.log("dfff")
 					if (!found){
 						found = true
 						active = server-1
@@ -66,65 +73,78 @@ async function playvid(url, res, epurl) {
 				} 
 		}
 		
-		console.log(active)
 		playhtml = playhtml.replace('style="display: none" id="server' + active + '"','style="display: block" id="server' + active + '"' )
 
-	  
-	  res.send(video1.toString()
-		.replace('{TITOLO}', title.innerHTML)
-			.replace('{EPISODIO}', episode.innerHTML)
-				.replace('{EPURL}', epurl)+ playhtml + video2);
+		res.send(video1.toString()
+			.replace('{TITOLO}', title.innerHTML)
+				.replace('{EPISODIO}', episode.innerHTML)
+					.replace('{EPURL}', epurl)+ playhtml + video2);
 				
-	  playhtml = "";
-	  return 0;
-	})
-	.catch(error => {
-    console.error('Error fetching website:', error.message);
-	});
-	
+		playhtml = "";
+		await browser.close();
+		return 0;
+	})();
 } 
 
 app.get('/play/:animeid/:epid', async (req, res) => {
-	
 	//Use the Animeworld api to get the video src url
 	const url = 'https://www.animeworld.so/play/' + req.params.animeid + "/" + req.params.epid;
-	const resp = await axios({
-	  method: "GET",
-	  url: 'https://www.animeworld.so/api/episode/info?id=' + req.params.epid,
-	});
-	const data = resp.data;
-
-
+	  
+    const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	
+	await page.goto('https://www.animeworld.so/api/episode/info?id=' + req.params.epid, {waitUntil: "domcontentloaded"})
+		.catch((err) => console.log("error loading url", err));
+	
+	let bodyHTML = await page.evaluate(() => document.getElementsByTagName("pre")[0].innerHTML);
+	data = JSON.parse(bodyHTML)
+	
+	await browser.close();
 	await playvid(url, res, data['grabber'])
 });
 
 app.get('/play/:animeid', async (req, res) => {
-	
 	// Animeworld by default redirects to the first episode on a working server
 	// This is convenient so that the user doesn't need to find a working server themself
-	const response = await axios.get('https://www.animeworld.so/play/' + req.params.animeid);
-	res.redirect(response.request._redirectable._currentUrl.replace(/^.*\/\/[^\/]+/, ''))
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	
+	await page.goto('https://www.animeworld.so/play/' + req.params.animeid,{waitUntil: "domcontentloaded",})
+		.catch((err) => console.log("error loading url", err));
+	
+	await page.waitForTimeout(2000);
+	res.redirect(page.url().replace(/^.*\/\/[^\/]+/, ''));
+	await browser.close();
 	return 0;
+	
 });
 
 const cerca1 = fs.readFileSync("./web/cerca1.html");
 const cerca2 = fs.readFileSync("./web/cerca2.html");
 
 var html = ""
-app.get('/search', function (req, res){
-   const url = 'https://www.animeworld.so/search?keyword=' + req.param('query');
-axios.get(url)
-  .then(response => {
-    
-	const dom = new JSDOM(response.data);
+app.get('/search', async (req, res) => {
 	
-	let matches = dom.window.document.querySelectorAll(".item > .inner > a");
+	const url = 'https://www.animeworld.so/search?keyword=' + req.param('query');
+   
+	const puppeteer = require('puppeteer');
+
+	(async () => {
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
 	
-	// Weird but works fast
+		await page.goto(url,{waitUntil: "domcontentloaded"})
+			.catch((err) => console.log("error loading url", err));
+		
+		let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 	
-	var group = false
-	var togroup = ""
-    matches.forEach(element => {
+		const dom = new JSDOM(bodyHTML);
+		
+		let matches = dom.window.document.querySelectorAll(".item > .inner > a");
+	
+		var group = false
+		var togroup = ""
+		matches.forEach(element => {
 			fixed = element.outerHTML
 			if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
 			
@@ -145,18 +165,12 @@ axios.get(url)
 				group = false
 				togroup = ""
 			}
-										
-		
-	});
+		});
 	
-	res.send(cerca1 + html + cerca2)
-	html = ""
-  })
-  .catch(error => {
-    console.error('Error fetching website:', error.message);
-  });
-	
-	
+		res.send(cerca1 + html + cerca2)
+		html = ""
+		await browser.close();
+	})();
 });
 
 app.listen(8080, function(){
