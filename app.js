@@ -19,10 +19,92 @@ app.get('/info', function (req, res){
 
 });
 
+const video1 = fs.readFileSync("./web/video1.html");
+const video2 = fs.readFileSync("./web/video2.html");
+var playhtml = ""
 
-app.get('/play', function (req, res){
-    res.sendFile(__dirname + '/web/play.html')
+async function playvid(url, res, epurl) { 
 
+   await axios.get(url)
+	.then(response => {
+
+	  const dom = new JSDOM(response.data);
+	  let matches = dom.window.document.querySelectorAll(".episode > a");
+	  let title = dom.window.document.querySelector("#anime-title");
+	  let episode = dom.window.document.querySelector(".episodeNum");
+	  
+	  var server = 1
+	  var active = 0
+	  var found = false
+	  matches.forEach(element => {
+		  currentelement = element.outerHTML
+		  
+		  if (element.innerHTML == "1"){
+			
+			playhtml+= '</div><div style="display: none" id="server' + server + '">' + currentelement;
+			server +=1;
+			if (playhtml.includes('class="active"')){
+				console.log("dfff")
+				if (!found){
+					found = true
+					active = server-1
+				}
+			} 
+		  }
+		  else{
+			  playhtml+= currentelement;
+		  }
+	  });
+	  
+		if (!found){
+			if (playhtml.includes('class="active"')){
+					console.log("dfff")
+					if (!found){
+						found = true
+						active = server-1
+					}
+				} 
+		}
+		
+		console.log(active)
+		playhtml = playhtml.replace('style="display: none" id="server' + active + '"','style="display: block" id="server' + active + '"' )
+
+	  
+	  res.send(video1.toString()
+		.replace('{TITOLO}', title.innerHTML)
+			.replace('{EPISODIO}', episode.innerHTML)
+				.replace('{EPURL}', epurl)+ playhtml + video2);
+				
+	  playhtml = "";
+	  return 0;
+	})
+	.catch(error => {
+    console.error('Error fetching website:', error.message);
+	});
+	
+} 
+
+app.get('/play/:animeid/:epid', async (req, res) => {
+	
+	//Use the Animeworld api to get the video src url
+	const url = 'https://www.animeworld.so/play/' + req.params.animeid + "/" + req.params.epid;
+	const resp = await axios({
+	  method: "GET",
+	  url: 'https://www.animeworld.so/api/episode/info?id=' + req.params.epid,
+	});
+	const data = resp.data;
+
+
+	await playvid(url, res, data['grabber'])
+});
+
+app.get('/play/:animeid', async (req, res) => {
+	
+	// Animeworld by default redirects to the first episode on a working server
+	// This is convenient so that the user doesn't need to find a working server themself
+	const response = await axios.get('https://www.animeworld.so/play/' + req.params.animeid);
+	res.redirect(response.request._redirectable._currentUrl.replace(/^.*\/\/[^\/]+/, ''))
+	return 0;
 });
 
 const cerca1 = fs.readFileSync("./web/cerca1.html");
@@ -59,8 +141,6 @@ axios.get(url)
 				
 			}
 			else{
-				console.log(togroup + fixed)
-				console.log("-----------------------------------------")
 				html+='<div class="titolo">' + togroup + fixed + "</div>";
 				group = false
 				togroup = ""
@@ -79,7 +159,6 @@ axios.get(url)
 	
 });
 
-console.log("Server is running on localhost8080")
 app.listen(8080, function(){
-    console.log("Server is running on localhost8080")
+    console.log("Server is running on localhost:8080")
 });
