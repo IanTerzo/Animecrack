@@ -50,6 +50,7 @@ div::-webkit-scrollbar {
     right: 18px;
     height: 150px; 
     width: 150px;
+    z-index: 30;
 }
 
 .bgimg{
