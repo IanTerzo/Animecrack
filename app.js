@@ -22,6 +22,7 @@ app.get('/info', function (req, res){
 const video1 = fs.readFileSync("./web/video1.html");
 const video2 = fs.readFileSync("./web/video2.html");
 var playhtml = ""
+var servershtml = ""
 
 async function playvid(url, res, epurl) { 
 
@@ -67,16 +68,27 @@ async function playvid(url, res, epurl) {
 		}
 		
 
-		playhtml = playhtml.replace('style="display: none" id="server' + active + '"','style="display: block" id="server' + active + '"' )
-
-	  
-	  res.send(video1.toString()
+		playhtml = playhtml.replace('style="display: none" id="server' + active + '"','style="display: block" id="server' + active + '" class="activeserver"')
+		
+		for(var i = 1;i<server;i++){
+			if (i == active){
+				servershtml +='<span class="serverspan activespan">Server ' + i + '</span>';
+			}
+			else{
+				servershtml +='<span class="serverspan">Server ' + i + '</span>';
+			}
+			
+		}
+		
+		console.log(servershtml);
+		res.send(video1.toString()
 		.replace('{TITOLO}', title.innerHTML)
 			.replace('{EPISODIO}', episode.innerHTML)
-				.replace('{EPURL}', epurl)+ playhtml + video2);
-				
-	  playhtml = "";
-	  return 0;
+				.replace('{EPURL}', epurl)+ servershtml + "</div><div>" + playhtml + video2);
+		
+		servershtml = "";
+	    playhtml = "";
+	    return 0;
 	})
 	.catch(error => {
     console.error('Error fetching website:', error.message);
