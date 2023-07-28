@@ -15,6 +15,18 @@ div::-webkit-scrollbar {
     display: none;
 }
 
+.rettcerca{
+    background-color: rgb(30, 38, 46); 
+    width: 1130px; 
+    border-radius: 25px; 
+    z-index: -6; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    min-height: 700px; 
+    overflow-y: auto;
+}
+
 .search {
     position: fixed; 
     left: 50%;
