@@ -97,8 +97,6 @@ div::-webkit-scrollbar {
 
 .titolo{
 	height:490.6px;
-	
-	
 }
 
 
@@ -191,4 +189,30 @@ video{
 .name {
     position: relative;
     top: 15px;
+}
+
+.serverspan{
+	color: purple;
+	background-color: white;
+	font-size: 18px;
+	padding: 4px 8px 4px 8px;
+	margin-left: 10px; 
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	
+}
+
+.serverspan:hover {
+    background-color: rgb(180, 180, 180) !important;
+    bottom:3px;
+    transition: 500ms;
+  }
+
+.activespan{
+	background-color: rgb(166, 166, 166) !important;
+}
+
+.activeserver{
+	display:block !important; 
 }
