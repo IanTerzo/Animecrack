@@ -20,6 +20,7 @@ div::-webkit-scrollbar {
     transform: translateX(-50%); 
     top: 5px;
     width: 400px;
+    z-index: 20;
 }
 
 .barraup{
@@ -98,6 +99,8 @@ div::-webkit-scrollbar {
     background-color: rgb(26, 29, 46); 
     color:white;
     font-size: 15px;
+    z-index: 9;
+    position: absolute;
 }
 
 .video{
@@ -126,6 +129,7 @@ div::-webkit-scrollbar {
 
 
 .yt{
+    z-index: 30;
     position: fixed;
     top: -10px; 
     right: 18px;
