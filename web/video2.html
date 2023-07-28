@@ -4,7 +4,20 @@
     
 	
     $(document).ready(function(){
-
+	
+		 $(".serverspan").click(function(){
+			document.getElementsByClassName("activeserver")[0].style = "display:none;";
+			document.getElementsByClassName("activeserver")[0].classList.remove("activeserver")
+			
+			toactive = this.innerHTML.replace("Server ", "server")
+			document.getElementById(toactive).classList.add("activeserver")
+			
+			document.getElementsByClassName("activespan")[0].style = "background-color:white"
+			document.getElementsByClassName("activespan")[0].classList.remove("activespan")
+			
+			this.classList.add("activespan");
+		 });
+		
         var cliccato = false
 
         $("#rett3").click(function(){
