@@ -144,7 +144,8 @@ div::-webkit-scrollbar {
     height: 100px; 
     position: fixed; 
     top:0px; 
-    left: 0px; 
+    left: 0px;
+    z-index: 8;
 }
 
 .titolo {
