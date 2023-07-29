@@ -4,7 +4,7 @@
     left: 18px; 
     color:white; 
     top: -4px;
-    z-index: 31;
+    z-index: 11;
 }
 
 body{
@@ -20,116 +20,9 @@ div::-webkit-scrollbar {
     transform: translateX(-50%); 
     top: 5px;
     width: 400px;
-    z-index: 20;
 }
-
-.barraup{
-    background-color: rgb(30, 38, 46); 
-    width: 100%; 
-    height: 50px; 
-    position: fixed; 
-    top:0px; 
-    left: 0px; 
-    z-index: 8;
-}
-
-.rettcerca{
-    background-color: rgb(30, 38, 46); 
-    width: 1250px; 
-    border-radius: 25px; 
-    z-index: -6; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    min-height: 700px; 
-    overflow-y: auto;
-}
-
-.txtslide1{
-    color: rgb(77, 77, 77);
-    left: 60px; 
-    z-index: 10; 
-    text-decoration: none; 
-    font-size: 20px; 
-    color:white;
-    position: absolute;
-    top:50px;
-}
-
-.txtslide2{
-    color: rgb(77, 77, 77);
-    left: 60px; 
-    z-index: 10; 
-    text-decoration: none; 
-    font-size: 20px; 
-    color:white;
-    position: absolute;
-    top:100px;
-}
-
-.cont-slider1{
-    left: -150px; 
-    position: fixed;
-    z-index: 30;
-}
-
-.slider1{
-    background-color: rgb(40, 46, 53); 
-    z-index: 31;
-    position: absolute; 
-    height: 3000px; 
-    width: 140px; 
-}
-
-.videoc{
-    background-color: rgb(30, 38, 46); 
-    position:absolute; 
-    width: 70%; 
-    height: 600px; 
-    top: 150px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    border-radius: 25px 25px;
-    z-index: 2;
-}
-
-.input{
-    width: 100%;
-    height: 35px;
-    background-color: rgb(26, 29, 46); 
-    color:white;
-    font-size: 15px;
-    z-index: 9;
-    position: absolute;
-}
-
-.video{
-    background: #000; 
-    width: 70%; 
-    height: auto; 
-    display: block; 
-    position: absolute; 
-    margin: 0; padding: 3px; 
-    outline: none; 
-    border-radius: 15px 15px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-}
-
-.epc{
-    background-color: rgb(30, 38, 46); 
-    position:absolute; 
-    width: 70%; 
-    height: 100%; 
-    top: 800px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    border-radius: 25px 25px;
-}
-
 
 .yt{
-    z-index: 30;
     position: fixed;
     top: -10px; 
     right: 18px;
@@ -193,7 +86,39 @@ div::-webkit-scrollbar {
     border-radius: 25px 25px;
 }
 
-.img-anime{
+.barraup {
+	
+	background-color: rgb(30, 38, 46); 
+	width: 100%; 
+	height: 50px; 
+	position: fixed; 
+	top:0px; 
+	left: 0px; 
+	
+}
+
+.cont-slider1 {
+	left: -150px; 
+	position: fixed;
+}
+
+.slider1 {
+	background-color: rgb(40, 46, 53); 
+	z-index: 10;
+	position: absolute; 
+	height: 1700px; 
+	width: 150px; 
+	
+}
+
+.txtslide1 {
+	top:50px;	
+}
+.txtslide1 {
+	top:80px;	
+}
+
+.img-anime {
     top: 17px; 
     left: 10px;
     width: 276px;
@@ -210,11 +135,16 @@ div::-webkit-scrollbar {
 .titolo {
     height: 450px;
     position: relative;
-    left: 100px;
+    left: 10px;
     display: inline-block; /* or display: inline-flex; */
     margin-right: 100px; /* Optional: Add some space between the divs */
 }
 
+.input {
+	background-color: rgb(26, 29, 46); 
+	color:white;
+		
+}
 .name {
     color: white; 
     top: 30px;
@@ -223,7 +153,7 @@ div::-webkit-scrollbar {
     text-decoration: none;
     font-size: 20px;
     position: relative;
-    width: 240px; /* Adjust the width to fit your layout */
+    width: 250px; /* Adjust the width to fit your layout */
     word-wrap: break-word;
     display: block; /* Change display to block */
 }
@@ -244,6 +174,45 @@ video{
     height: 300px;
 }
 
+.epc{
+	background-color: rgb(30, 38, 46); 
+	position:absolute; 
+	width: 70%; 
+	height: max-content; 
+	top: 800px; 
+	left: 50%; 
+	transform: translateX(-50%); 
+	border-radius: 25px 25px;
+	
+}
+
+.video{
+	background: #000; 
+	width: 896px; 
+	height: 504px; 
+	display: block; 
+	position: absolute; 
+	margin: 0; 
+	padding: 3px; 
+	outline: none; 
+	border-radius: 15px 15px; 
+	left: 50%; 
+	transform: translateX(-50%); 
+	
+}
+
+.videoc {
+	background-color: rgb(30, 38, 46); 
+	position:absolute; 
+	width: 70%; 
+	height: 600px; 
+	top: 150px; 
+	left: 50%; 
+	transform: translateX(-50%); 
+	border-radius: 25px 25px;
+	z-index: 2;
+	
+}
 #episodi a{
 	align-items: center;
   appearance: none;
