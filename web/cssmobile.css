@@ -34,6 +34,7 @@ div::-webkit-scrollbar {
     top: 5px;
     width: 500px;
     height: 80px;
+    z-index: 20;
 }
 
 .input{
