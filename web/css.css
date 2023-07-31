@@ -35,7 +35,7 @@ div::-webkit-scrollbar {
 
 .rettcerca{
     background-color: rgb(30, 38, 46); 
-    width: 1250px; 
+    width: 900px; 
     border-radius: 25px; 
     z-index: -6; 
     display: flex; 
@@ -43,6 +43,9 @@ div::-webkit-scrollbar {
     justify-content: space-between; 
     min-height: 700px; 
     overflow-y: auto;
+    position: absolute; 
+    left: 50%; 
+    transform: translate(-50%, 0);
 }
 
 .txtslide1{
@@ -198,35 +201,31 @@ div::-webkit-scrollbar {
     left: 10px;
     width: 276px;
     height: 390.6px;
-    position: fixed;
+    position: static;
     border-radius: 15px 15px;
-}
-
-.titolo{
-	height:490.6px;
 }
 
 
 .titolo {
-    height: 450px;
+    height: 500px;
     position: relative;
-    left: 100px;
     display: inline-block; /* or display: inline-flex; */
-    margin-right: 100px; /* Optional: Add some space between the divs */
+    
 }
 
 .name {
     color: white; 
-    top: 30px;
-    left: 20px;
+    left: 0px;
     text-align: center;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     position: relative;
-    width: 240px; /* Adjust the width to fit your layout */
-    word-wrap: break-word;
+    width: 300px; /* Adjust the width to fit your layout */
+    overflow-wrap:break-word;
     display: block; /* Change display to block */
+    
 }
+
 
 .titolo img{ 
 	top: 17px; 
