@@ -108,15 +108,15 @@ div::-webkit-scrollbar {
 
 .video{
     background: #000; 
-    width: 65%; 
-    height: 80%; 
+    transform:  translateX(-50%) scale(1.5);
     display: block; 
     position: absolute; 
-    margin: 0; padding: 3px; 
+    margin: 0; 
+    padding: 3px; 
     outline: none; 
     border-radius: 15px 15px; 
     left: 50%; 
-    transform: translateX(-50%); 
+    margin-top: 80px;
 }
 
 .epc{
