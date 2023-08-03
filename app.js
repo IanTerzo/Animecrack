@@ -9,8 +9,80 @@ const app = express();
 
 app.use(express.static(__dirname + '/'));
 
+const recents = fs.readFileSync("default.html");
+recents_script = `
+
+</div>
+</body>
+
+<script>
+        
+    $(document).ready(function(){
+
+        var cliccato = false
+
+        $("#rett3").click(function(){
+            if(cliccato == false) {
+                $('#home').css({'left':'-50px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(90deg)', 'transition': '1s'});  
+                cliccato = true
+            }
+            else{
+                $('#home').css({'left':'-150px', 'transition': '1s',}); 
+                $('#rett3').css({'transform':'rotate(0deg)', 'transition': '1s'});  
+                cliccato = false
+            };
+        });
+
+    });
+
+</script>`
+
+recentshtml = ""
 app.get('/', function (req, res){
-    res.sendFile(__dirname + '/index.html')
+	const url = 'https://www.animeworld.so';
+	
+	axios.get(url)
+	.then(response => {	
+		const dom = new JSDOM(response.data);
+		let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner > a");
+		
+		var group = false
+		var togroup = ""
+		matches.forEach(element => {
+			fixed = element.outerHTML
+			if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
+			
+			if (fixed.includes('<div class="ova">OVA</div>')){fixed = fixed.replace('<div class="ova">OVA</div>',"")}
+			
+			if (fixed.includes('<div class="ona">ONA</div>')){fixed = fixed.replace('<div class="ona">ONA</div>',"")}
+			
+			if (fixed.includes('<div class="movie">Movie</div>')){fixed = fixed.replace('<div class="movie">Movie</div>',"")}
+			
+			if (fixed.includes('<div class="special">Special</div>')){fixed = fixed.replace('<div class="special">Special</div>',"")}
+			
+			
+			if (group == false){
+				togroup=fixed;
+				group = true;
+				
+			}
+			else{
+				recentshtml+='<div class="titolo">' + togroup + fixed + "</div>";
+				group = false
+				togroup = ""
+			}
+										
+		
+	});
+	
+		res.send(recents + recentshtml + recents_script)
+		return 0;
+	})
+	.catch(error => {
+		console.error('Error fetching website:', error.message);
+	});
+	
 
 });
 
@@ -141,6 +213,8 @@ axios.get(url)
 			if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
 			
 			if (fixed.includes('<div class="ova">OVA</div>')){fixed = fixed.replace('<div class="ova">OVA</div>',"")}
+			
+			if (fixed.includes('<div class="ona">ONA</div>')){fixed = fixed.replace('<div class="ona">ONA</div>',"")}
 			
 			if (fixed.includes('<div class="movie">Movie</div>')){fixed = fixed.replace('<div class="movie">Movie</div>',"")}
 			
