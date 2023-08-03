@@ -108,8 +108,8 @@ div::-webkit-scrollbar {
 
 .video{
     background: #000; 
-    width: 70%; 
-    height: auto; 
+    width: 65%; 
+    height: 80%; 
     display: block; 
     position: absolute; 
     margin: 0; padding: 3px; 
