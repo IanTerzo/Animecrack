@@ -27,6 +27,32 @@ div::-webkit-scrollbar {
     overflow-y: auto;
 }
 
+.rettnuovi{
+    background-color: rgb(30, 38, 46); 
+    width: 1130px; 
+    border-radius: 25px; 
+    z-index: -6; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    overflow-y: auto;
+	height: 100%;
+}
+
+.ep{
+    color:white; 
+    position:absolute;
+    padding-top: 20px; 
+    padding-left: 30px;
+    padding-right: 30px;
+    z-index: -5;
+    font-size:small;
+    text-align: center;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+}
+
 .search {
     position: fixed; 
     left: 50%;
@@ -146,12 +172,6 @@ div::-webkit-scrollbar {
     border-radius: 15px 15px;
 }
 
-.titolo{
-	height:490.6px;
-	
-	
-}
-
 .barraup{
     background-color: rgb(30, 38, 46); 
     width: 100%; 
@@ -163,7 +183,7 @@ div::-webkit-scrollbar {
 }
 
 .titolo {
-    height: 450px;
+    height: 540px;
     position: relative;
     left: 110px;
     display: inline-block; /* or display: inline-flex; */
